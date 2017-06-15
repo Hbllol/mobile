@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font: 400 14px/1.5 Tahoma, "Lucida Grande", Verdana, "Microsoft Yahei", STXihei, hei;
+            overflow-x: hidden;
+            margin: 0 auto;
+            background: #f2f2f2;
+        }
+        
+        .search,
+        body {
+            min-width: 320px;
+            max-width: 540px;
+        }
+        
+        @media(min-width:320px) {
+            html {
+                font-size: 14px;
+            }
+        }
+        
+        @media(min-width:340px) {
+            html {
+                font-size: 16px;
+            }
+        }
+        
+        @media(min-width:440px) {
+            html {
+                font-size: 18px;
+            }
+        }
+        
+        .outr {
+            width: 100%;
+            height: 1200px;
+            margin: 0 auto;
+            background: #F6F6F6;
+        }
+        
+        .search {
+            width: 100%;
+            height: 3.21em;
+            background: #F6F6F6;
+            position: fixed;
+            top: 0;
+            display: block;
+        }
+        /*.search::after {
+            content: '';
+            width: 100%;
+            height: 3.21em;
+        }
+        */
+        
+        #search {
+            width: 80%;
+            height: 2em;
+            margin-top: .6em;
+            margin-left: .6em;
+            line-height: 2em;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #666;
+            font-size: .86em;
+            outline: none;
+            text-indent: 30px;
+            border: 1px solid #999;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+        }
+        
+        .search span {
+            position: absolute;
+            top: 50%;
+            left: 1.2em;
+            margin-top: -11px;
+            width: 15px;
+            height: 18px;
+            background: url(http://pic.c-ctrip.com/platform/h5/home/un_ico_home_v620.png);
+            background-position: -59px -276px;
+            background-size: 104px 326px;
+        }
+        
+        .user {
+            width: 44px;
+            height: 44px;
+            position: absolute;
+            top: 50%;
+            margin-top: -22px;
+            right: 4px;
+        }
+        
+        .user_img {
+            width: 24px;
+            height: 26px;
+            background: url(http://pic.c-ctrip.com/platform/h5/home/un_ico_home_v620.png);
+            background-position: -59px -193px;
+            background-size: 104px 326px;
+            margin-left: 10px;
+        }
+        
+        .user p {
+            text-align: center;
+            font-size: .7rem;
+            letter-spacing: .3rem;
+            color: #2EAAE0;
+        }
+        
+        .gimg {
+            width: 100%;
+            height: 74px;
+            background: red;
+            margin-top: 3.21em;
+        }
+        
+        .gimg img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        
+        .nav {
+            width: 98%;
+            margin: 0 auto;
+            height: 6em;
+            margin-top: 4px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+        }
+        
+        .nav_1 {
+            height: 100%;
+            max-width: 33.33333%;
+            -webkit-box-flex: 1;
+            background: #ff697a;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            box-sizing: border-box;
+        }
+        
+        .nav_2 {
+            height: 100%;
+            max-width: 33.3333333%;
+            background: #ff697a;
+            -webkit-box-flex: 1;
+            margin-left: 1px;
+            box-sizing: border-box;
+        }
+        
+        .nav_3 {
+            max-width: 33.3333333333%;
+            margin-left: 1px;
+            height: 100%;
+            background: #ff697a;
+            -webkit-box-flex: 1;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            box-sizing: border-box;
+        }
+        
+        .nav_1_top {
+            width: 100%;
+            height: 50%;
+            text-align: center;
+            color: #fff;
+            font-size: 1rem;
+            text-shadow: 0 2px 1px rgba(0, 0, 0, .2);
+            line-height: 3rem;
+        }
+        
+        .nav_2_top {
+            width: 100%;
+            height: 50%;
+            text-align: center;
+            color: #fff;
+            font-size: 1rem;
+            text-shadow: 0 2px 1px rgba(0, 0, 0, .2);
+            line-height: 3rem;
+            border-bottom: 1px solid #F6F6F6;
+        }
+        
+        .nav_3_top {
+            width: 100%;
+            height: 50%;
+            text-align: center;
+            color: #fff;
+            font-size: 1rem;
+            text-shadow: 0 2px 1px rgba(0, 0, 0, .2);
+            line-height: 3rem;
+            border-bottom: 1px solid #F6F6F6;
+        }
+        /*        
+        .nav_1_top::after {
+            content: 'saaasasa';
+            display: block;
+        }*/
+        
+        .nav_2_bottom {
+            width: 100%;
+            height: 50%;
+            text-align: center;
+            color: #fff;
+            font-size: 1rem;
+            text-shadow: 0 2px 1px rgba(0, 0, 0, .2);
+            line-height: 3rem;
+        }
+        
+        .nav_3_bottom {
+            width: 100%;
+            height: 50%;
+            text-align: center;
+            color: #fff;
+            font-size: 1rem;
+            text-shadow: 0 2px 1px rgba(0, 0, 0, .2);
+            line-height: 3rem;
+        }
+        
+        .desc {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 33.3333%;
+            flex: 0 0 33.3333%;
+            max-width: 33.3333%;
+        }
+        
+        .nav_two .nav_1,
+        .nav_two .nav_2,
+        .nav_two .nav_3 {
+            background-color: #3d98ff;
+        }
+        
+        .nav_three .nav_1,
+        .nav_three .nav_2,
+        .nav_three .nav_3 {
+            background-color: #44c522;
+        }
+        
+        .nav_four .nav_1,
+        .nav_four .nav_2,
+        .nav_four .nav_3 {
+            background-color: #fc9720;
+        }
+        
+        .subNav {
+            width: 96%;
+            height: 182px;
+            margin: 0 auto;
+            padding: 0 4px;
+            font-size: 14px;
+            margin-bottom: 8px;
+            margin-top: 10px;
+            border-radius: 5px;
+            background: white;
+        }
+        
+        s
+    </style>
+</head>
+
+<body>
+    <div class="outr">
+        <div class="search">
+            <input id="search" type="text" name="" value="搜索:目的地/酒店/景点/航班号">
+            <span></span>
+            <div class="user">
+                <div class="user_img"></div>
+                <p>我的</p>
+            </div>
+        </div>
+        <div class="gimg">
+            <img src="https://dimg04.c-ctrip.com/images/700f0h0000008sstj6108_1536_307_25.jpg" alt="">
+        </div>
+        <div class="nav">
+            <div class="nav_1 desc">
+                <div class="nav_1_top">
+                    酒 店
+                </div>
+                <div class="nav_1_bottom">
+
+                </div>
+            </div>
+            <div class="nav_2 desc">
+                <div class="nav_2_top">
+                    海外酒店
+                </div>
+                <div class="nav_2_bottom">
+                    特价酒店
+                </div>
+            </div>
+            <div class="nav_3  desc">
+                <div class="nav_3_top">
+                    团 购
+                </div>
+                <div class="nav_3_bottom">
+                    民宿·客栈
+                </div>
+            </div>
+        </div>
+        <div class="nav nav_two">
+            <div class="nav_1 desc">
+                <div class="nav_1_top">
+                    机 票
+                </div>
+                <div class="nav_1_bottom">
+
+                </div>
+            </div>
+            <div class="nav_2 desc">
+                <div class="nav_2_top">
+                    火车票·抢票
+                </div>
+                <div class="nav_2_bottom">
+                    特价机票
+                </div>
+            </div>
+            <div class="nav_3  desc">
+                <div class="nav_3_top">
+                    汽车票·船票
+                </div>
+                <div class="nav_3_bottom">
+                    专车·租车
+                </div>
+            </div>
+        </div>
+        <div class="nav nav_three">
+            <div class="nav_1 desc">
+                <div class="nav_1_top">
+                    旅 游
+                </div>
+                <div class="nav_1_bottom">
+
+                </div>
+            </div>
+            <div class="nav_2 desc">
+                <div class="nav_2_top">
+                    目的地攻略
+                </div>
+                <div class="nav_2_bottom">
+                    周边游
+                </div>
+            </div>
+            <div class="nav_3  desc">
+                <div class="nav_3_top">
+                    邮 轮
+                </div>
+                <div class="nav_3_bottom">
+                    定制旅行
+                </div>
+            </div>
+        </div>
+        <div class="nav four">
+            <div class="nav_1 desc">
+                <div class="nav_1_top">
+                    景点·玩乐
+                </div>
+                <div class="nav_1_bottom">
+
+                </div>
+            </div>
+            <div class="nav_2 desc">
+                <div class="nav_2_top">
+                    美食林
+                </div>
+                <div class="nav_2_bottom">
+                    WiFi·电话卡
+                </div>
+            </div>
+            <div class="nav_3  desc">
+                <div class="nav_3_top">
+                    全球购·换汇
+                </div>
+                <div class="nav_3_bottom">
+                    保险·签证
+                </div>
+            </div>
+        </div>
+        <div class="subNav"></div>
+    </div>
+</body>
+
+</html>
